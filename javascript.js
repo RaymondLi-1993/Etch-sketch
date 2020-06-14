@@ -3,7 +3,6 @@ const RESET = document.querySelector(`#reset`);
 const GRID = document.querySelector(`#grid-size`);
 const RANDOM = document.querySelector(`#color-change`);
 
-
 let change = (event) =>{
   if(event.target.classList.value.includes(`color`)){
   const r = Math.floor(Math.random() * 256);
@@ -15,12 +14,6 @@ let change = (event) =>{
   event.target.style.backgroundColor = `#FFFAFA`
   }
 }
-
-BOARD.addEventListener(`mouseover`, change);
-RESET.addEventListener('click', () =>{
-  location.reload();
-})
-
 
 let makeGrid = (size = 16) => {
   BOARD.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -41,7 +34,6 @@ let clearGrid = () =>{
   }
 }
 
-
 GRID.addEventListener('click', () =>{
 let result = prompt('Please enter a number between 4-24!');
 let newResult = +result;
@@ -60,6 +52,13 @@ RANDOM.addEventListener('click', ()=>{
     elem.classList.add('color');
   })
 });
+
+
+BOARD.addEventListener(`mouseover`, change);
+RESET.addEventListener('click', () =>{
+  clearGrid();
+  makeGrid();
+})
 
 makeGrid();
 
